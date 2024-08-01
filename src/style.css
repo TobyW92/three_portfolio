@@ -1,0 +1,460 @@
+.webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  html {
+    overflow-x: hidden;
+  }
+  
+  body {
+    background-color: #000000;
+    overflow-x: hidden;
+  }
+
+  @keyframes flash {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes noise-before {
+    0% {
+       clip: rect(61px, 9999px, 52px, 0);
+    }
+    5% {
+       clip: rect(33px, 9999px, 144px, 0);
+    }
+    10% {
+       clip: rect(121px, 9999px, 115px, 0);
+    }
+    15% {
+       clip: rect(144px, 9999px, 162px, 0);
+    }
+    20% {
+       clip: rect(62px, 9999px, 180px, 0);
+    }
+    25% {
+       clip: rect(34px, 9999px, 42px, 0);
+    }
+    30% {
+       clip: rect(147px, 9999px, 179px, 0);
+    }
+    35% {
+       clip: rect(99px, 9999px, 63px, 0);
+    }
+    40% {
+       clip: rect(188px, 9999px, 122px, 0);
+    }
+    45% {
+       clip: rect(154px, 9999px, 14px, 0);
+    }
+    50% {
+       clip: rect(63px, 9999px, 37px, 0);
+    }
+    55% {
+       clip: rect(161px, 9999px, 147px, 0);
+    }
+    60% {
+       clip: rect(109px, 9999px, 175px, 0);
+    }
+    65% {
+       clip: rect(157px, 9999px, 88px, 0);
+    }
+    70% {
+       clip: rect(173px, 9999px, 131px, 0);
+    }
+    75% {
+       clip: rect(62px, 9999px, 70px, 0);
+    }
+    80% {
+       clip: rect(24px, 9999px, 153px, 0);
+    }
+    85% {
+       clip: rect(138px, 9999px, 40px, 0);
+    }
+    90% {
+       clip: rect(79px, 9999px, 136px, 0);
+    }
+    95% {
+       clip: rect(25px, 9999px, 34px, 0);
+    }
+    100% {
+       clip: rect(173px, 9999px, 166px, 0);
+    }
+  }
+  
+  @keyframes noise-after {
+    0% {
+       clip: rect(26px, 9999px, 33px, 0);
+    }
+    5% {
+       clip: rect(140px, 9999px, 198px, 0);
+    }
+    10% {
+       clip: rect(184px, 9999px, 89px, 0);
+    }
+    15% {
+       clip: rect(121px, 9999px, 6px, 0);
+    }
+    20% {
+       clip: rect(181px, 9999px, 99px, 0);
+    }
+    25% {
+       clip: rect(154px, 9999px, 133px, 0);
+    }
+    30% {
+       clip: rect(134px, 9999px, 169px, 0);
+    }
+    35% {
+       clip: rect(26px, 9999px, 187px, 0);
+    }
+    40% {
+       clip: rect(147px, 9999px, 137px, 0);
+    }
+    45% {
+       clip: rect(31px, 9999px, 52px, 0);
+    }
+    50% {
+       clip: rect(191px, 9999px, 109px, 0);
+    }
+    55% {
+       clip: rect(74px, 9999px, 54px, 0);
+    }
+    60% {
+       clip: rect(145px, 9999px, 75px, 0);
+    }
+    65% {
+       clip: rect(153px, 9999px, 198px, 0);
+    }
+    70% {
+       clip: rect(99px, 9999px, 136px, 0);
+    }
+    75% {
+       clip: rect(118px, 9999px, 192px, 0);
+    }
+    80% {
+       clip: rect(1px, 9999px, 83px, 0);
+    }
+    85% {
+       clip: rect(145px, 9999px, 98px, 0);
+    }
+    90% {
+       clip: rect(121px, 9999px, 154px, 0);
+    }
+    95% {
+       clip: rect(156px, 9999px, 44px, 0);
+    }
+    100% {
+       clip: rect(67px, 9999px, 122px, 0);
+    }
+  }
+  
+  /* Lenis */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+  
+  .glitch {
+    position: relative;
+    font-size: 3em;
+    font-weight: bold;
+    color: #FFFFFF;
+    letter-spacing: 3px;
+    z-index: 1;
+  }
+  
+  .glitch:before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 100%;
+    color: 50px;
+    background-color: #000000;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+    animation: noise-before 3s infinite linear alternate-reverse;
+  }
+  
+  .glitch:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 2px;
+    width: 100%;
+    color: 50px;
+    background-color: #000000;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+    animation: noise-after 2s infinite linear alternate-reverse;
+  }
+  
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15vh;
+    font-size: 1.15em;
+    color: #FFFFFF;
+    max-width: 80vw;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .hero p {
+    margin-top: 2em;
+    font-weight: 500;
+    margin-bottom: 4em;
+  }
+  .hero span {
+    font-weight: 400;
+    font-style: italic;
+    font-size: .65em;
+  }
+  
+  .scroll {
+    position: relative;
+    background-color: rgba(55, 238, 238, 0.301);
+    box-shadow: 0 0 10px 2px #06f0c983;
+    backdrop-filter: blur(6px);
+    border-radius: 8px;
+    padding: 7px;
+    text-align: left;
+    animation: flash 1.3s infinite ease-in-out alternate-reverse;
+  }
+  
+  .scroll:after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: -3px;
+    border: 2px solid #00ffff73;
+    border-radius: 12px;
+    box-shadow:  0px 0px 10px 2px #238e9249 inset;
+  }
+  
+  .spacer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0 10vw;
+    min-height: 100vh;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  h3 {
+    font-size: 1.25em;
+    padding: 5px 0;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    color: white;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid #ffffff44;
+    border-radius: 8px;
+    box-shadow:  0px 0px 10px 2px #ffffff22 inset;
+    backdrop-filter: blur(8px) brightness(50%);
+    margin: 0 auto;
+    width: 40vw;
+    min-width: 700px;
+    position: fixed;
+    bottom: -50vh;
+  }
+  
+  .card:after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: -7px;
+    border: 2px solid #ffffff22;
+    border-radius: 12px;
+    box-shadow:  0px 0px 10px 2px #0f0f0fbe inset;
+  }
+  
+  .t2 {
+    right: 10vw;
+  }
+  
+  .t4 {
+    right: 10vw;
+  }
+  
+  .t5 {
+    align-self: center;
+  }
+  
+  .split {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .iconList {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 5px auto;
+    width: 80%;
+    padding: 0 0 10px 0;
+  }
+  
+  .iconList li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 500;
+    font-size: .9em;
+    padding: 0 5px;
+    width: 75px;
+  }
+  
+  .iconList li img {
+    margin-top: 5px;
+    width: 45px;
+    height: 45px;
+    padding: 2px;
+  }
+  
+  .iconList li img.bg {
+    background-color: white;
+    border-radius: 4px;;
+  }
+  
+  body::-webkit-scrollbar {
+    width: .5em;
+    border-radius: 10px;
+    padding-top: 5px;
+  }
+   
+  body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(124, 124, 124, 0.664);
+    background-color: rgba(48, 48, 48, 0.842);
+    border-radius: 5px;
+  }
+   
+  body::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #ff04decb;
+    outline: 1px solid rgba(65, 65, 65, 0.733);
+  }
+  
+  #sound {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 99;
+    background-color: rgba(2, 255, 255, 0.479);
+    box-shadow: 0 0 10px 2px #01fde883;
+    border: 1px solid #06f0f096;
+    backdrop-filter: blur(6px);
+    border-radius: 8px;
+    padding: 7px;
+    text-align: left;
+    font-size: 1.15em;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 992px) {
+    .glitch {
+      font-size: 2em;
+    }
+    .hero {
+      font-size: 1em;
+      padding-top: 5vh;
+    }
+    h2 {
+      font-size: 1.1em;
+    }
+    h3 {
+      font-size: 1em;
+    }
+    .spacer {
+      margin: 0 5vw;
+    }
+    .card {
+      min-width: unset;
+      padding: 5px;
+      width: 90vw;
+    }
+  
+    .t2 {
+      right: unset;
+    }
+  
+    .t4 {
+      right: unset;
+    }
+  
+    .split {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .split div {
+      width: 100%;;
+    }
+    .iconList {
+      width: 100%;
+    }
+  
+    .iconList li img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+  
+  @media (max-height: 500px) and (orientation: landscape) {
+    .card {
+      bottom: -100vh;
+      max-width: 250px;
+    }
+    .iconList li {
+      font-size: .75em;
+    }
+    .t2 {
+      right: 5vw;
+    }
+    .t4 {
+      right: 5vw;
+    }
+  }
