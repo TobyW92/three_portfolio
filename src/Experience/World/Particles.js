@@ -12,6 +12,7 @@ export default class Particles {
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.time = this.experience.time
+        this.timeline = this.experience.timeline
         this.resources = this.experience.resources
         this.debug = this.experience.debug
         this.camera = this.experience.camera
@@ -28,6 +29,42 @@ export default class Particles {
             this.addDebugTools()
         }
 
+        this.timeline.timelines.t1.to('.t1', {
+            onStart: () => {
+                this.particles.morph1()
+            },
+            onReverseComplete: () => {
+                this.particles.morph0()
+            }
+        })
+
+        this.timeline.timelines.t3.to('.t3', {
+            onStart: () => {
+                this.particles.morph2()
+            },
+            onReverseComplete: () => {
+                this.particles.morph1()
+            }
+        })
+
+        this.timeline.timelines.t4.to('.t4', {
+            onStart: () => {
+                this.particles.morph4()
+            },
+            onReverseComplete: () => {
+                this.particles.morph2()
+            }
+        })
+
+        this.timeline.timelines.t5.to('.t5', {
+            onStart: () => {
+                this.particles.morph3()
+            },
+            onReverseComplete: () => {
+                this.particles.morph4()
+            }
+        })
+
     }
 
     setModel() {
@@ -40,7 +77,6 @@ export default class Particles {
         // Get positions of the objects in model
         const positions = this.model.children.map((child) => {
             if (child instanceof THREE.Mesh) {
-                console.log('a')
                 return child.geometry.attributes.position
               }
         })

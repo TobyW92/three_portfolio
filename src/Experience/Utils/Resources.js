@@ -27,6 +27,7 @@ export default class Resources extends EventEmitter {
         this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader)
         this.loaders.textureLoader = new THREE.TextureLoader()
         this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader()
+        this.loaders.audioLoader = new THREE.AudioLoader()
     }
 
     startLoading() {
@@ -50,6 +51,12 @@ export default class Resources extends EventEmitter {
 
                     this.sourceLoaded(source, file)
 
+                })
+            } else if (source.type === 'audio') {
+                this.loaders.audioLoader.load(source.path, (file) => {
+                    console.log('a')
+                    this.sourceLoaded(source, file)
+                    
                 })
             }
 

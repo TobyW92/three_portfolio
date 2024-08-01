@@ -4,6 +4,7 @@ import Plane from './Plane'
 import Particles from './Particles'
 import Stars from './Stars'
 import Ship from './Ship'
+import Music from '../Utils/Music.'
 
 export default class World {
 

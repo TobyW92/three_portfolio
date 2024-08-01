@@ -11,6 +11,7 @@ import Resources from './Utils/Resources'
 import sources from './sources'
 import Timeline from './Utils/Timeline'
 import Debug from './Utils/Debug'
+import Music from './Utils/Music.'
 
 let instance = null
 
@@ -35,6 +36,8 @@ export default class Experience {
         this.renderer = new Renderer()
         this.world = new World()
         this.timeline = new Timeline()
+        this.music = new Music()
+        
 
         this.lenis = new Lenis()
         this.lenis.on('scroll', (e) => {

@@ -20,6 +20,7 @@ export default class Ship {
         this.timeline.timelines.t1.to(this.hasScrolled, {
             value: true
         }, '<')
+
         this.tween = {}
         this.tween.created = false
         this.tween.toTarget = 0
@@ -27,6 +28,11 @@ export default class Ship {
         this.resource = this.resources.items.shipModel
 
         this.setModel()
+
+        if (this.experience.lenis.progress > 0) {
+            this.hasScrolled.value = true
+            this.anchor.rotation.x = 1 * (Math.PI / 180)
+        }
     }
 
     setModel() {
