@@ -1,5 +1,6 @@
 import restart from 'vite-plugin-restart'
 import glsl from 'vite-plugin-glsl'
+import { resolve } from 'path'
 
 export default {
     root: 'src/', // Sources files (typically where index.html is)
