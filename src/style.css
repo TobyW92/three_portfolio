@@ -498,6 +498,16 @@
     border-radius: 50%; 
     background: #04AA6D;
   }
+
+  .t5 a {
+    color: #00ffff;
+    text-decoration: none;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+  .spacer.tl5 {
+    z-index: 1;
+  }
   
   @media (max-width: 992px) {
     .glitch {
@@ -516,6 +526,7 @@
     .spacer {
       margin: 0 5vw;
     }
+
     .card {
       min-width: unset;
       padding: 5px;
