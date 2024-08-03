@@ -88,7 +88,6 @@ export default class Ship {
         this.timeline.timelines.t5.to(this.anchor.position, {
             x: 0,
             y: this.anchor.position.y - 2
-            
         },'<')
 
     }

@@ -24,7 +24,6 @@ export default class Timeline {
                 start: '-100vh bottom',
                 end: 'bottom center',
                 scrub: true,
-                markers: true
             }
         })
 

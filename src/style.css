@@ -183,6 +183,71 @@
     pointer-events: none;
   }
   
+  nav ul {
+    display: none;
+    list-style-type: none;
+    margin: 0;
+  }
+  
+  nav ul a {
+    color: #00ffff;
+    text-decoration: none;
+    /* padding: 0 1rem; */
+    font-size: 1.5rem;
+  }
+
+  nav ul a:hover {
+    text-shadow: #fc02db 2px 0 10px;
+  }
+
+  nav .ul-open {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    order: 3;
+    width: 100%;
+    padding: 0 .25rem .25rem 0;
+  }
+
+  nav {
+    max-height: 45px;
+    overflow: hidden;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 99;
+  }
+
+  nav.open {
+    max-height: 300px;
+  }
+
+  #menuIcon {
+    cursor: pointer;
+    align-self: center;
+    margin-right: 20px;
+  }
+  
+  .bar1, .bar2, .bar3 {
+      width: 20px;
+      height: 3px;
+      background-color: #fc02db;
+      margin: 4px 0;
+      transition: 0.4s;
+  }
+  
+  .open .bar1 {
+      transform: translate(0, 7px) rotate(-45deg);
+  }
+  
+  .open .bar2 {
+      opacity: 0;
+  }
+  
+  .open .bar3 {
+      transform: translate(0, -7px) rotate(45deg);
+  }
+
   .glitch {
     position: relative;
     font-size: 3em;
@@ -321,6 +386,8 @@
   
   .t5 {
     align-self: center;
+    bottom: unset;
+    top: -50vh;
   }
   
   .split {
@@ -378,20 +445,58 @@
   }
   
   #sound {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 99;
     background-color: rgba(2, 255, 255, 0.479);
     box-shadow: 0 0 10px 2px #01fde883;
     border: 1px solid #06f0f096;
     backdrop-filter: blur(6px);
     border-radius: 8px;
     padding: 7px;
+    margin-left: 15px;
     text-align: left;
-    font-size: 1.15em;
+    font-size: 0.85em;
     color: #FFFFFF;
     cursor: pointer;
+  }
+
+  .soundControls {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+  }
+
+  #volume {
+    -webkit-appearance: none;
+    appearance: none;
+    opacity: 0.4;
+    transition: opacity .2s;
+    width: 90px;
+    height: 5px;
+    border-radius: 5px; 
+    background: #d3d3d3;
+    outline: none;
+    cursor:pointer;
+  }
+  #volume:hover {
+    opacity: 1;
+  }
+
+  #volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; 
+    background: #00ffff;
+  }
+
+  #volume::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; 
+    background: #04AA6D;
   }
   
   @media (max-width: 992px) {

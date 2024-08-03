@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/tw.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toby Wright: Contact</title>
+  <link rel="stylesheet" href="./style.css">
+    <style>
+
+      body {
+        color: #fff;
+      }
+
+      nav {
+        background-color: black;
+      }
+
+      #logo {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        width: 50px;
+      }
+
+      h1 {
+        text-align: center;
+        margin: 25px;
+      }
+
+      p {
+        margin-bottom: 25px;
+      }
+
+      table {
+        margin: auto;
+        border: 1px solid white;
+        text-align: center;
+      }
+
+      table th {
+        padding: 5px;
+      }
+
+      table td {
+        padding: 5px 10px;
+      }
+
+      #contact {
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      #contact p {
+        text-align: center;
+      }
+
+      a {
+        color: #02fcef;
+        text-decoration: none;
+      }
+
+      a:visited {
+        color: aqua;
+      }
+
+    #socials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      text-align: center;
+      padding: 15px;
+    }
+     
+    </style>
+</head>
+<body>
+  <nav>
+    <div id="menuIcon" onclick="openNav(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <ul id="menu">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./projects.html">Projects</a></li>
+      <li><a href="./resume.html">Resume</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+  </ul>
+
+  <img id="logo" src="./tw.svg" alt="Toby Wright"/>
+
+  <script>
+    function openNav(x) {
+      x.classList.toggle("open");
+      document.getElementById("menu").classList.toggle("ul-open");
+      document.querySelector("nav").classList.toggle("open");
+    }
+  </script>
+  </nav>
+
+    <main>
+
+
+        <header>
+          <h1>Contact Me</h1>
+        </header>
+
+        <div id="contact">
+          <p>Thanks for checking out my website! Feel free to leave me a message here or view my contact information below.</p>
+            
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+            </tr>
+            <tr>
+              <td>Toby Wright</td>
+              <td><a href="mailto:toby@toby-wright.com">toby@toby-wright.com</a></td>
+              <td>513-692-9962</td>
+            </tr>
+          </table>
+
+          <div id="socials">
+            <a href="https://github.com/TobyW92">Github</a>
+            <a href="https://www.linkedin.com/in/toby-wright-2a3b51128/">LinkedIn</a>
+          </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

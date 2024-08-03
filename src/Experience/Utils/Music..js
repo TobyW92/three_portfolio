@@ -37,5 +37,9 @@ export default class Music {
             }
             
         })
+
+        document.querySelector('#volume').addEventListener('change', () => {
+            this.sound.setVolume(document.querySelector('#volume').value / 100)
+        })
     }
 }

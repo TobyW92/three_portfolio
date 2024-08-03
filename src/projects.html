@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/tw.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toby Wright: Projects</title>
+  <link rel="stylesheet" href="./style.css">
+
+    <style>
+      *
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    overflow: hidden;
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+.game {
+    box-shadow: 0px 0px 15px 1px #ea00ff, inset 0px 0px 8px 1px #ea00ff;
+    border: 1px solid #ea00ff;
+    width: 900px;
+    height: 695px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .gameInstr {
+    box-shadow: 0px 0px 6px 1px #ea00ff, inset 0px 0px 6px 1px #ea00ff;
+    border: 1px solid #ea00ff;
+    margin: 55px auto;
+    width: 650px;
+    position: relative;
+    padding: 15px;
+    color: white;
+    text-align: center;
+    font-family: "Orbitron", sans-serif;
+    border-radius: 5px;
+    background-color: #ea00ff24;
+    font-size: 29px;
+  }
+  .gameOuter h1 {
+    color: white;
+    font-family: "Orbitron", sans-serif;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 2rem;
+    text-shadow: 0.1rem 0.1rem 0.3rem #ea00ff;
+  }
+  .mute {
+    background: transparent;
+    border: none;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    width: 55px;
+  }
+  .fa-volume-up {
+    font-size: 35px;
+    color: rgb(255, 0, 255);
+    text-shadow: 0rem 0rem 4px #ea00ff;
+  }
+  .fa-volume-mute {
+    font-size: 35px;
+    color: rgb(255, 0, 255);
+    text-shadow: 0rem 0rem 4px #ea00ff;
+  }
+  
+  .playButton {
+    color: white;
+    font-family: "Orbitron", sans-serif;
+    text-align: center;
+    font-size: 32px;
+    text-shadow: 0.1rem 0.1rem 0.3rem #ea00ff;
+    background: #0006;
+    border: 1px solid #ea00ff;
+    display: inline-block;
+    padding: 25px;
+    box-shadow: 0px 0px 15px 1px #ea00ff, inset 0px 0px 8px 1px #ea00ff;
+    background: radial-gradient(
+      circle,
+      rgba(169, 114, 175, 0.753) 0%,
+      rgba(197, 114, 200, 0.5676645658263305) 16%,
+      rgba(169, 114, 175, 0.26) 63%
+    );
+    transition: all 0.5s cubic-bezier(1, -0.03, 0, 0.95);
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 240px;
+    cursor: pointer;
+    position: absolute;
+    left: 330px;
+    bottom: 300px;
+    z-index: 999;
+  }
+  
+  .playButton:hover {
+    transform: scale(1.1);
+    background: radial-gradient(
+      circle,
+      rgba(197, 114, 200, 0.753) 0%,
+      rgba(192, 46, 197, 0.568) 16%,
+      rgba(121, 50, 129, 0.66) 63%
+    );
+    box-shadow: 0px 0px 25px 1px #ea00ff, inset 0px 0px 8px 1px #ea00ff;
+  }
+
+  .aiON {
+    color: white;
+    font-family: "Orbitron", sans-serif;
+    text-align: center;
+    font-size: 16px;
+    text-shadow: 0.1rem 0.1rem 0.3rem #ff0062;
+    border: 1px solid #ff0062;
+    display: inline-block;
+    padding: 10px;
+    box-shadow: 0px 0px 15px 1px #ff0062, inset 0px 0px 8px 1px #ff0062;
+    background: radial-gradient(
+      circle,
+      rgba(175, 114, 134, 0.753) 0%,
+      rgba(200, 114, 114, 0.568) 16%,
+      rgba(175, 114, 122, 0.26) 63%
+    );
+    transition: all 0.5s cubic-bezier(1, -0.03, 0, 0.95);
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 300px;
+    position: absolute;
+    left: 300px;
+    bottom: 15px;
+    z-index: 999;
+    background: radial-gradient(
+      circle,
+      rgba(196, 88, 88, 0.753) 0%,
+      rgba(179, 26, 46, 0.568) 16%,
+      rgba(129, 50, 50, 0.66) 63%
+    );
+    box-shadow: 0px 0px 25px 1px #ff0062, inset 0px 0px 8px 1px #ff0062;
+  }
+  .aiOFF {
+    color: white;
+    font-family: "Orbitron", sans-serif;
+    text-align: center;
+    font-size: 16px;
+    text-shadow: 0.1rem 0.1rem 0.3rem #ff0062;
+    border: 1px solid #ff0062;
+    display: inline-block;
+    padding: 10px;
+    box-shadow: 0px 0px 15px 1px #ff0062, inset 0px 0px 8px 1px #ff0062;
+    background: radial-gradient(
+      circle,
+      rgba(175, 114, 134, 0.753) 0%,
+      rgba(200, 114, 114, 0.568) 16%,
+      rgba(175, 114, 122, 0.26) 63%
+    );
+    transition: all 0.5s cubic-bezier(1, -0.03, 0, 0.95);
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 280px;
+    position: absolute;
+    left: 310px;
+    bottom: 15px;
+    z-index: 999;
+    
+  }
+  
+  .aiON:hover {
+    transform: scale(1.1);
+    
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  #back {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    z-index: 99;
+    margin: 15px;
+    color: white;
+    background-color: rgb(3, 124, 124);
+    outline: none;
+    font-size: 1.15rem;
+    padding: 3px 10px 5px;
+    border-radius: 8px;
+    border: 1px solid aqua;
+    cursor: pointer;
+  }
+  header {
+    position: relative;
+    z-index: 90;
+    color: white;
+    text-align: center;
+    margin: 25px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 15%;
+    display: flex;
+    justify-content: end;
+  }
+  .project {
+    position: relative;
+    z-index: 90;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 15px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ffffff44;
+    border-radius: 8px;
+    box-shadow:  0px 0px 10px 2px #ffffff22 inset;
+    backdrop-filter: blur(8px) brightness(50%);
+  }
+
+  .project::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: -7px;
+    border: 2px solid #ffffff22;
+    border-radius: 12px;
+    box-shadow:  0px 0px 10px 2px #0f0f0fbe inset;
+  }
+
+  .project button {
+    margin: 15px;
+    color: white;
+    text-align: center;
+    text-shadow: 0.1rem 0.1rem 0.3rem #ea00ff;
+    background: #0006;
+    border: 1px solid #ea00ff;
+    display: inline-block;
+    box-shadow: 0px 0px 15px 1px #ea00ff, inset 0px 0px 8px 1px #ea00ff;
+    background: radial-gradient(
+      circle,
+      rgba(169, 114, 175, 0.753) 0%,
+      rgba(197, 114, 200, 0.5676645658263305) 16%,
+      rgba(169, 114, 175, 0.26) 63%
+    );
+    transition: all 0.5s cubic-bezier(1, -0.03, 0, 0.95);
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 105px;
+    padding: 15px;
+    align-self: center;
+  }
+  .project.hidden {
+    display: none;
+  }
+  #back.hidden {
+    display: none;
+  }
+    </style>
+</head>
+<body>
+  <nav>
+    <div id="menuIcon" onclick="openNav(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <ul id="menu">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./projects.html">Projects</a></li>
+      <li><a href="./resume.html">Resume</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+  </ul>
+
+  <script>
+    function openNav(x) {
+      x.classList.toggle("open");
+      document.getElementById("menu").classList.toggle("ul-open");
+      document.querySelector("nav").classList.toggle("open");
+    }
+  </script>
+  </nav>
+
+    <main>
+
+
+        <header>
+          <h1>Project Gallery</h1>
+          <p>More to come soon!</p>
+        </header>
+
+        <button id="back" class="hidden" onclick="getCanvas(true)">Back</button>
+        <canvas class="webgl"></canvas>
+        
+        <div class="container">
+          <div class="project">
+            <h2>Asteroids</h2>
+            <div>
+              <p>I've always loved the game asteroids. I followed a youtube tutorial for the javascript, but added a few things to make it my own and put it in an arcade machine I textured.</p>
+            </div>
+            <button id="playNow">Play Now?</button>
+          </div>
+        </div>
+  
+    </main>
+
+    
+    <script type="module" src="./projectsScript.js"></script>
+    <script src="./games/ast.js"></script>
+</body>
+</html>

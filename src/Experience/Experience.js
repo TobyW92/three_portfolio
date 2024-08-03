@@ -45,9 +45,12 @@ export default class Experience {
         })
         this.lenis.emitter.events.scroll[0]()
 
-        this.stats = new Stats()
-        this.stats.showPanel(0)
-        document.body.appendChild(this.stats.dom)
+        if (this.debug.active) {
+            this.stats = new Stats()
+            this.stats.showPanel(0)
+            document.body.appendChild(this.stats.dom)
+        }
+
        
 
         this.sizes.on('resize', () => {
@@ -70,14 +73,19 @@ export default class Experience {
 
     update() {
         // console.log('tick happened')
-        this.stats.begin()
+        
 
         this.lenis.raf(this.time.elapsed)
         this.camera.update()
         this.world.update()
         this.renderer.update()
 
-        this.stats.end()
+        if (this.debug.active) {
+            this.stats.begin()
+            this.stats.end()
+        }
+
+        
     }
 
     destroy() {

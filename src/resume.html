@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/tw.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toby Wright: Resume</title>
+  <link rel="stylesheet" href="./style.css">
+
+    <style>
+
+      body {
+        color: #fff;
+      }
+
+      nav {
+        background-color: black;
+      }
+
+
+      #logo {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        width: 50px;
+      }
+
+      h1 {
+        text-align: center;
+        margin: 25px;
+      }
+
+      p {
+        margin-bottom: 25px;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+      }
+     
+      a {
+        text-decoration: none;
+        color: aqua;
+      }
+      a:visited {
+        color: aqua;
+      }
+    </style>
+</head>
+<body>
+  <nav>
+    <div id="menuIcon" onclick="openNav(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <ul id="menu">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./projects.html">Projects</a></li>
+      <li><a href="./resume.html">Resume</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+  </ul>
+
+  <script>
+    function openNav(x) {
+      x.classList.toggle("open");
+      document.getElementById("menu").classList.toggle("ul-open");
+      document.querySelector("nav").classList.toggle("open");
+    }
+  </script>
+  </nav>
+
+  <img id="logo" src="./tw.svg" alt="Toby Wright"/>
+
+    <main>
+
+
+        <header>
+          <h1>Resume</h1>
+        </header>
+
+        <p>I am currently open to work oppourtunities. If you like my site and think I would be a good fit for a position, please download my resume and feel free to contact me.</p>
+        <p>I am also open to freelance work, if you have a project you would like me to work on.</p>
+        <a href="./pdf/TobyWright-Resume.pdf">Download PDF</a>
+  
+    </main>
+
+</body>
+</html>

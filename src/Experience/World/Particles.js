@@ -16,12 +16,25 @@ export default class Particles {
         this.resources = this.experience.resources
         this.debug = this.experience.debug
         this.camera = this.experience.camera
+        this.lenis = this.experience.lenis
     
         this.particles = {}
 
         this.resource = this.resources.items.particleModel
 
         this.setModel()
+
+        if (this.lenis.progress >= 0.850) {
+            this.particles.morphThanks()
+        } else if (this.lenis.progress >= 0.600) {
+            this.particles.morphShip()
+        } else if (this.lenis.progress >= 0.400) {
+            this.particles.morphThree()
+        } else if (this.lenis.progress >= 0.200) {
+            this.particles.morphTorus()
+        } else if (this.lenis.progress >= 0.015) {
+            this.particles.morphName()
+        }
         
 
         if (this.debug.active) {
@@ -29,41 +42,50 @@ export default class Particles {
             this.addDebugTools()
         }
 
-        this.timeline.timelines.t1.to('.t1', {
+        this.timeline.timelines.t1.to(this.particles.points.rotation, {
             onStart: () => {
-                this.particles.morph1()
+                this.particles.morphName()
             },
             onReverseComplete: () => {
-                this.particles.morph0()
-            }
-        })
+                this.particles.morphSphere()
+            },
+        }, '<')
 
-        this.timeline.timelines.t3.to('.t3', {
+        this.timeline.timelines.t2.to(this.particles.points.rotation, {
             onStart: () => {
-                this.particles.morph2()
+                this.particles.morphTorus()
             },
             onReverseComplete: () => {
-                this.particles.morph1()
+                this.particles.morphName()
             }
-        })
+        }, '<')
 
-        this.timeline.timelines.t4.to('.t4', {
+        this.timeline.timelines.t3.to(this.particles.points.rotation, {
             onStart: () => {
-                this.particles.morph4()
+                this.particles.morphThree()
             },
             onReverseComplete: () => {
-                this.particles.morph2()
+                this.particles.morphTorus()
             }
-        })
+        }, '<')
 
-        this.timeline.timelines.t5.to('.t5', {
+        this.timeline.timelines.t4.to(this.particles.points.rotation, {
             onStart: () => {
-                this.particles.morph3()
+                this.particles.morphShip()
             },
             onReverseComplete: () => {
-                this.particles.morph4()
+                this.particles.morphThree()
             }
-        })
+        }, '<')
+
+        this.timeline.timelines.t5.to(this.particles.points.rotation, {
+            onStart: () => {
+                this.particles.morphThanks()
+            },
+            onReverseComplete: () => {
+                this.particles.morphShip()
+            }
+        }), '<'
 
     }
 
@@ -181,17 +203,17 @@ export default class Particles {
             this.particles.index = index
         }
     
-        this.particles.morph0 = () => { this.particles.morph(0)
+        this.particles.morphSphere = () => { this.particles.morph(0)
         }
-        this.particles.morph1 = () => { this.particles.morph(1)
+        this.particles.morphName = () => { this.particles.morph(1)
         }
-        this.particles.morph2 = () => { this.particles.morph(2)
+        this.particles.morphThree = () => { this.particles.morph(2)
         }
-        this.particles.morph3 = () => { this.particles.morph(3)
+        this.particles.morphThanks = () => { this.particles.morph(3)
         }
-        this.particles.morph4 = () => { this.particles.morph(4)
+        this.particles.morphTorus = () => { this.particles.morph(4)
         }
-        this.particles.morph5 = () => { this.particles.morph(5)
+        this.particles.morphShip = () => { this.particles.morph(5)
         }
 
 
@@ -205,12 +227,12 @@ export default class Particles {
         this.particles.material.uniforms.uColorB.value.set(this.particles.colorB)
     })
     // this.debugFolder.add(particles.material.uniforms.uProgress, 'value').min(0).max(1).step(0.001).name('Progress').listen()
-    this.debugFolder.add(this.particles, 'morph0')
-    this.debugFolder.add(this.particles, 'morph1')
-    this.debugFolder.add(this.particles, 'morph2')
-    this.debugFolder.add(this.particles, 'morph3')
-    this.debugFolder.add(this.particles, 'morph4')
-    this.debugFolder.add(this.particles, 'morph5')
+    this.debugFolder.add(this.particles, 'morphSphere')
+    this.debugFolder.add(this.particles, 'morphName')
+    this.debugFolder.add(this.particles, 'morphThree')
+    this.debugFolder.add(this.particles, 'morphThanks')
+    this.debugFolder.add(this.particles, 'morphTorus')
+    this.debugFolder.add(this.particles, 'morphShip')
     this.debugFolder.add(this.particles.points.scale, 'x').min(0).max(100).step(0.001).name('X Scale')
     this.debugFolder.add(this.particles.points.scale, 'y').min(0).max(100).step(0.001).name('y Scale')
     this.debugFolder.add(this.particles.points.scale, 'z').min(0).max(100).step(0.001).name('z Scale')
@@ -224,7 +246,7 @@ export default class Particles {
     }
 
     update() {
-
+        // this.particles.points.rotation.z = Math.sin(this.time.elapsed * .0005)
     }
 
     resize() {

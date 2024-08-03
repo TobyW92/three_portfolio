@@ -8,10 +8,36 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <nav>
+      <div id="menuIcon" onclick="openNav(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      <ul id="menu">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./projects.html">Projects</a></li>
+        <li><a href="./resume.html">Resume</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+    </ul>
+
+    <script>
+      function openNav(x) {
+        x.classList.toggle("open");
+        document.getElementById("menu").classList.toggle("ul-open");
+        document.querySelector("nav").classList.toggle("open");
+      }
+    </script>
+    </nav>
+
     <canvas class="webgl"></canvas>
 
-    <div id="sound">Play Music</div>
-
+    <div class="soundControls">
+      <input type="range" min="1" max="100" value="10" class="slider" id="volume">
+      <div id="sound">Play Music</div>
+    </div>
+   
+    <main>
     <div class="spacer">
       <div class="hero">
         <h1 class="glitch" data-text="Venture into the Unknown">Venture into the Unknown</h1>
@@ -109,23 +135,19 @@
             <ul class="iconList">
              <li>
                 <span>AWS</span>
-                <img src="./images/icons/JS.svg" alt="JavaScript Icon">
+                <img class="bg" src="./icons/aws.svg" alt="AWS Icon">
              </li>
              <li>
               <span>Vercel</span>
-              <img src="./images/icons/Python.svg" alt="Python Icon">
+              <img class="bg" src="./icons/vercel.svg" alt="Verceln Icon">
              </li>
              <li>
               <span>Adobe</span>
-              <img src="./images/icons/Java.svg" alt="Java Icon">
+              <img src="./icons/acc.png" alt="Adobe Creative Cloud Icon">
              </li>
              <li>
               <span>Blender</span>
-              <img src="./images/icons/HTML.svg" alt="HTML5 Icon">
-             </li>
-             <li>
-              <span>Office</span>
-              <img src="./images/icons/HTML.svg" alt="HTML5 Icon">
+              <img src="./icons/blender.svg" alt="Blender Icon">
              </li>
            </ul>
           </div>
@@ -133,23 +155,19 @@
             <ul class="iconList">
               <li>
                 <span>React</span>
-                <img src="./images/icons/linux.svg" alt="Linux Icon">
+                <img src="./icons/react.svg" alt="React Icon">
               </li>
               <li>
                 <span>Three.js</span>
-                <img src="./images/icons/windows.svg" alt="Windows Icon">
+                <img class="bg" src="./icons/three-js.svg" alt="Three.js Icon">
               </li>
               <li>
                 <span>Node.js</span>
-                <img src="./images/icons/cli.svg" alt="CLI Icon">
+                <img src="./icons/node-js.svg" alt="Node.js Icon">
               </li>
               <li>
                 <span>Next.js</span>
-                <img src="./images/icons/git.svg" alt="Git Icon">
-              </li>
-              <li>
-                <span>Dog</span>
-                <img src="./images/icons/git.svg" alt="Git Icon">
+                <img class="bg" src="./icons/next-js.svg" alt="Next.js Icon">
               </li>
             </ul>
           </div>
@@ -176,12 +194,13 @@
     <div class="spacer tl5">
       <div class="card t5">
         <h2>On the Horizon</h2>
-        <p>I'm seeking my next emplyment oppourtuity and taking freelance work in the meantime when it's available. Feel free to get in touch.</p>
-        <button>Contact Me</button>
+        <p>I'm seeking my next emplyment oppourtuity, working on a degree, and learning things I find interesting along the way! Feel free to get in touch.</p>
+        <a href="contact.html">Contact Me</a>
       </div>
     </div>
     <div class="spacer"></div>
     <div class="spacer"></div>
+  </main>
 
     <script type="module" src="./script.js"></script>
 </body>

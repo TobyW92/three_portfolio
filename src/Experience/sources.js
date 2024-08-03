@@ -13,7 +13,19 @@ export default [{
 }, {
     name: 'particleModel',
     type: 'gltfModel',
-    // path: 'models/particlesModel.glb'
+    // path: 'models/test.glb',
     path: 'models/morphShapes.glb'
+}, {
+    name: 'jsModel',
+    type: 'gltfModel',
+    path: 'models/logos/js.glb'
+}, {
+    name: 'javaModel',
+    type: 'gltfModel',
+    path: 'models/logos/java.glb'
+}, {
+    name: 'pythonModel',
+    type: 'gltfModel',
+    path: 'models/logos/py.glb'
 }
 ]

@@ -4,7 +4,7 @@ import Plane from './Plane'
 import Particles from './Particles'
 import Stars from './Stars'
 import Ship from './Ship'
-import Music from '../Utils/Music.'
+import Logos from './Logos'
 
 export default class World {
 
@@ -19,20 +19,24 @@ export default class World {
             this.enviornment = new Environment()
             this.stars = new Stars()
             this.ship = new Ship()
+            this.logos = new Logos()
         })
 
     }
 
     update() {
-        if(this.fox) {
-            this.fox.update()
-        }
 
         if (this.plane) {
             this.plane.update()
         }
         if (this.ship) {
             this.ship.update()
+        }
+        if (this.logos) {
+            this.logos.update()
+        }
+        if (this.particles) {
+            this.particles.update()
         }
     }
 }
