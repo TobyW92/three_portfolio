@@ -4,8 +4,10 @@
 // import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 import Experience from './Experience/Experience.js'
+import { inject } from "@vercel/analytics"
 
 const experience = new Experience(document.querySelector('canvas.webgl'))
+inject()
 
 // /**
 //  * Loaders
